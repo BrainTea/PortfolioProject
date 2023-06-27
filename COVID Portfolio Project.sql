@@ -7,6 +7,7 @@ Select *
 From PortfolioProject..CovidVaccinations
 Order By 3,4
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Selecting data that we are going to be using --
 
@@ -14,6 +15,7 @@ Select location, date, total_cases, new_cases, total_deaths, population
 From PortfolioProject..CovidDeaths
 Order BY 1,2
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Looking at Total Cases vs Total Deaths --
 -- Shows likelihood of dying if you contract covid in your country --
@@ -25,6 +27,7 @@ From PortfolioProject..CovidDeaths
 Where location = 'United States' and continent is not NULL
 Order BY 1,2
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Looking at Total Cases vs Population --
 -- Shows what percentage of population got covid --
@@ -34,6 +37,7 @@ From PortfolioProject..CovidDeaths
 Where location = 'United States' and continent is not NULL
 Order BY 1,2
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Looking at Countries with Highest Infection Rates compared to Population --
 
@@ -43,6 +47,7 @@ Where continent is not NULL
 Group by location, population
 Order by PercentPopulationInfected desc
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Showing Countries with the Highest Death Count per Population --
 
@@ -52,6 +57,7 @@ Where continent is not NULL
 Group by location
 Order by TotalDeathCountry desc
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Showing Continents with the Highest Death Count --
 
@@ -62,6 +68,7 @@ Where continent is NULL
 Group by location
 Order by TotalDeathCount Desc
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Global Numbers of total cases and deaths --
 
@@ -75,6 +82,7 @@ Select Sum(new_cases) as total_cases, Sum(cast(new_deaths as bigint)) as total_d
 From PortfolioProject..CovidDeaths
 Where continent is not null
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Looking at Total Population vs Vaccinations --
 
@@ -131,6 +139,7 @@ Select *,(RollingPeopleVaccinated/population)*100 as PercentageVaccinated
 From #PercentPopulationVaccinated
 Order by 1,2,3
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Creating View to store data for later visualizations --
 
